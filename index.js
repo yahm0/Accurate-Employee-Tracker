@@ -92,3 +92,21 @@ function viewRoles() {
       runMainMenu();
     });
   }
+
+
+  // Function to view all employees and their details
+function viewEmployees() {
+    const query = `SELECT employees.employee_id, employees.first_name, employees.last_name, 
+                   roles.title AS job_title, departments.name AS department, roles.salary, 
+                   CONCAT(manager.first_name, ' ', manager.last_name) AS manager
+                   FROM employees
+                   LEFT JOIN roles ON employees.role_id = roles.role_id
+                   LEFT JOIN departments ON roles.department_id = departments.department_id
+                   LEFT JOIN employees manager ON employees.manager_id = manager.employee_id`;
+    connection.query(query, (err, res) => {
+      if (err) throw err;
+      console.table(res);
+      runMainMenu();
+    });
+  }
+  
