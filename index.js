@@ -69,3 +69,13 @@ function runMainMenu() {
       });
     }
     
+        // Defines the functions called in the switch statement above for database operations
+        function viewDepartments() {
+            // SQL query to fetch departments and display them using console.table
+            const query = 'SELECT * FROM departments';
+            connection.query(query, (err, res) => {
+              if (err) throw err;
+              console.table(res);
+              runMainMenu();  // Return to the main menu after displaying
+            });
+          }
