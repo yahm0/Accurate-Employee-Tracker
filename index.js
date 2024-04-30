@@ -79,3 +79,16 @@ function runMainMenu() {
               runMainMenu();  // Return to the main menu after displaying
             });
           }
+
+
+          // Function to view all roles in the database
+function viewRoles() {
+    const query = `SELECT roles.role_id, roles.title, departments.name AS department, roles.salary
+                   FROM roles
+                   INNER JOIN departments ON roles.department_id = departments.department_id`;
+    connection.query(query, (err, res) => {
+      if (err) throw err;
+      console.table(res);
+      runMainMenu();
+    });
+  }
