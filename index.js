@@ -165,3 +165,50 @@ function addRole() {
       });
     });
   }
+
+  // Function to add a new employee to the database
+function addEmployee() {
+    inquirer.prompt([
+      {
+        name: 'first_name',
+        type: 'input',
+        message: 'What is the employee\'s first name?',
+      },
+      {
+        name: 'last_name',
+        type: 'input',
+        message: 'What is the employee\'s last name?',
+      },
+      {
+        name: 'role_id',
+        type: 'input',
+        message: 'What is the role ID for this employee?',
+        validate: value => {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return 'Please enter a valid role ID.';
+        }
+      },
+      {
+        name: 'manager_id',
+        type: 'input',
+        message: 'What is the manager ID for this employee (enter if applicable, else leave blank)?',
+        validate: value => {
+          if (value === '' || isNaN(value) === false) {
+            return true;
+          }
+          return 'Please enter a valid manager ID or leave blank.';
+        },
+        default: null
+      }
+    ]).then(answers => {
+      const query = 'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
+      connection.query(query, [answers.first_name, answers.last_name, answers.role_id, answers.manager_id || null], (err, res) => {
+        if (err) throw err;
+        console.log(`Added ${answers.first_name} ${answers.last_name} to employees.`);
+        runMainMenu();
+      });
+    });
+  }
+  
