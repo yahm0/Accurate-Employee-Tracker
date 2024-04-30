@@ -21,3 +21,20 @@ connection.connect(err => {
   runMainMenu();
 });
 
+// Function to display the main menu and handle user input
+function runMainMenu() {
+    inquirer.prompt({
+      name: 'action',
+      type: 'list',
+      message: 'What would you like to do?',
+      choices: [
+        'View All Departments',
+        'View All Roles',
+        'View All Employees',
+        'Add a Department',
+        'Add a Role',
+        'Add an Employee',
+        'Update an Employee Role',
+        'Exit'
+      ]
+    })
