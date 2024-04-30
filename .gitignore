@@ -1,3 +1,6 @@
+.env
+pack
+
 # Logs
 logs
 *.log
