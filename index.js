@@ -38,3 +38,34 @@ function runMainMenu() {
         'Exit'
       ]
     })
+    .then(answer => {
+        switch(answer.action) {
+          case 'View All Departments':
+            viewDepartments();
+            break;
+          case 'View All Roles':
+            viewRoles();
+            break;
+          case 'View All Employees':
+            viewEmployees();
+            break;
+          case 'Add a Department':
+            addDepartment();
+            break;
+          case 'Add a Role':
+            addRole();
+            break;
+          case 'Add an Employee':
+            addEmployee();
+            break;
+          case 'Update an Employee Role':
+            updateEmployeeRole();
+            break;
+          case 'Exit':
+            connection.end();
+            console.log('Goodbye!');
+            break;
+        }
+      });
+    }
+    
