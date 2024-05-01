@@ -116,7 +116,7 @@ Calculate  and  view  the  total  utilized  budget  of  a  department.
 
 ## Screenshots
 
-![Employee Tracker](./assets/imgsScreenshot 2024-05-01 090823 employee tracker.png)
+![Employee Tracker](/assets/imgs/Screenshot%202024-05-01%20090823%20employee%20tracker.png)
 ### Tutorial Video : https://app.screencastify.com/v3/watch/tY8axpjbQ5ImpJZh3FVN
 
 ## Contributing
