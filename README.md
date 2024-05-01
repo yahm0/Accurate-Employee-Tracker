@@ -50,7 +50,7 @@ cd employee-tracker
 ```bash
 npm install
 ```
-4. Set up your MySQL database and configure the connection settings in a .env file. You can use the provided .env.example as a template.
+4. Set up your MySQL database and configure the connection settings in a .env file.
 
 5. Seed your database with initial data if needed.
 ```bash
