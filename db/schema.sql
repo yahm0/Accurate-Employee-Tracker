@@ -1,6 +1,10 @@
 -- schema.sql
 -- Use this script to create your database schema for the command-line application
 
+-- Create the database if it does not exist and then use it
+-- CREATE DATABASE IF NOT EXISTS employee_tracker_db;
+-- USE employee_tracker_db;
+
 -- Create a table for departments
 CREATE TABLE departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,

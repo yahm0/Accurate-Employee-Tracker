@@ -246,3 +246,58 @@ function updateEmployeeRole() {
       });
     });
   }
+
+  function viewEmployeesByManager() {
+    inquirer.prompt({
+      name: 'manager_id',
+      type: 'input',
+      message: 'Enter the ID of the manager to view their employees:'
+    }).then(answer => {
+      const query = `SELECT employees.id, employees.first_name, employees.last_name, roles.title
+                     FROM employees
+                     INNER JOIN roles ON employees.role_id = roles.id
+                     WHERE employees.manager_id = ?`;
+      connection.query(query, [answer.manager_id], (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        start();
+      });
+    });
+  }
+  
+  function viewEmployeesByDepartment() {
+    inquirer.prompt({
+      name: 'department_id',
+      type: 'input',
+      message: 'Enter the ID of the department to view its employees:'
+    }).then(answer => {
+      const query = `SELECT employees.id, employees.first_name, employees.last_name, roles.title
+                     FROM employees
+                     INNER JOIN roles ON employees.role_id = roles.id
+                     WHERE roles.department_id = ?`;
+      connection.query(query, [answer.department_id], (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        start();
+      });
+    });
+  }
+
+  function viewTotalBudget() {
+    inquirer.prompt({
+      name: 'department_id',
+      type: 'input',
+      message: 'Enter the ID of the department to view its total utilized budget:'
+    }).then(answer => {
+      const query = `SELECT SUM(roles.salary) AS total_budget
+                     FROM employees
+                     INNER JOIN roles ON employees.role_id = roles.id
+                     WHERE roles.department_id = ?`;
+      connection.query(query, [answer.department_id], (err, res) => {
+        if (err) throw err;
+        console.log(`Total utilized budget of the department: $${res[0].total_budget}`);
+        start();
+      });
+    });
+  }
+  

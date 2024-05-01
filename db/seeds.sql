@@ -1,5 +1,7 @@
--- seed.sql
 -- Use this script to populate the database with initial data
+
+-- seeds.sql
+-- USE employee_tracker_db;
 
 -- Insert initial departments
 INSERT INTO departments (name) VALUES
